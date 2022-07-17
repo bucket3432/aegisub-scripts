@@ -24,6 +24,10 @@ end
 
 local MARKER_EFFECT = "aegs:end"
 
+-- -------------------------------------------------------------------
+-- Helpers
+--
+
 --- Determines the index of the aegs:end marker
 -- The marker is a dialogue line that contains aegs:end
 -- in the effect field.
@@ -37,6 +41,10 @@ local function find_marker(subs)
   end
   return nil
 end
+
+-- -------------------------------------------------------------------
+-- Main
+--
 
 function import_main(subs, sel)
   local marker_index = find_marker(subs)
