@@ -8,16 +8,15 @@ local tr = aegisub.gettext
 local util = require 'aegisub.util'
 
 local haveDepCtrl, DependencyControl, depctrl = pcall(require, "l0.DependencyControl")
-local ConfigHandler, config, petzku
+local petzku
 if haveDepCtrl then
   depctrl = DependencyControl {
     {
-      {"petzku.util", version="0.2.0", url="https://github.com/petzku/Aegisub-Scripts"},
-      {"a-mo.ConfigHandler", version="1.1.4", url="https://github.com/TypesettingTools/Aegisub-Motion",
-        feed="https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"},
+      {"petzku.util", version="0.2.0", url="https://github.com/petzku/Aegisub-Scripts",
+        feed="https://raw.githubusercontent.com/petzku/Aegisub-Scripts/master/DependencyControl.json"},
     }
   }
-  petzku, ConfigHandler = depctrl:requireModules()
+  petzku = depctrl:requireModules()
 else
   petzku = require "petzku.util"
 end
@@ -78,7 +77,6 @@ local macros = {
 }
 
 if haveDepCtrl then
-    --table.insert(macros, {tr'Config', tr'Open configuration menu', show_config_dialog})
     depctrl:registerMacros(macros)
 else
     for i, macro in ipairs(macros) do
