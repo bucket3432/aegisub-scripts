@@ -119,6 +119,19 @@ local function prompt_for_import_file()
   return values.path_input
 end
 
+--- Checks if a file is readable
+-- @param file the path of the file to check
+-- @return true if the file is readable, or false otherwise
+local function is_file_readable(file)
+  local handle = io.open(file, "r")
+  if handle then
+    io.close()
+    return true
+  else
+    return false
+  end
+end
+
 --- Determines the index of the aegs:end marker
 -- The marker is a dialogue line that contains aegs:end
 -- in the effect field.
@@ -143,6 +156,10 @@ end
 function import_main(subs, sel)
   local file = prompt_for_import_file()
   if not file then aegisub.cancel() end
+  if not is_file_readable(file) then
+    aegisub.log(0, tr"Could not open file for reading: " .. file)
+    aegisub.cancel()
+  end
 
   local raw_events = petzku.io.run_cmd(
     table.concat({'aegsc', '<', '"%s"'}, ' '):format(file),
