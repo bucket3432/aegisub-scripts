@@ -46,6 +46,9 @@ end
 -- Main
 --
 
+--- Main function for the Import entry
+-- @param subs an Aegisub subtitle object
+-- @param sel the current selection
 function import_main(subs, sel)
   local marker_index = find_marker(subs)
   if marker_index then
