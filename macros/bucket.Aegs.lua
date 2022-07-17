@@ -22,23 +22,40 @@ else
   petzku = require "petzku.util"
 end
 
+local MARKER_EFFECT = "aegs:end"
+
+-- Returns the index of the aegs:end marker, or nil if not found.
+local function find_marker(subs)
+  for i, line in ipairs(subs) do
+    if line.effect == MARKER_EFFECT then
+      return i
+    end
+  end
+  return nil
+end
+
 function import_main(subs, sel)
-  local marker = {
-    class = "dialogue",
-    comment = true,
-    layer = 0,
-    start_time = 0,
-    end_time = 0,
-    style = "Default",
-    actor = "",
-    margin_l = 0,
-    margin_r = 0,
-    margin_t = 0,
-    effect = "aegs:end",
-    text = "",
-    extra = {},
-  }
-  subs.insert(1, marker)
+  local marker_index = find_marker(subs)
+  if marker_index then
+    subs.deleterange(1, marker_index - 1)
+  else
+    local marker = {
+      class = "dialogue",
+      comment = true,
+      layer = 0,
+      start_time = 0,
+      end_time = 0,
+      style = "Default",
+      actor = "",
+      margin_l = 0,
+      margin_r = 0,
+      margin_t = 0,
+      effect = MARKER_EFFECT,
+      text = "",
+      extra = {},
+    }
+    subs.insert(1, marker)
+  end
 end
 
 local macros = {
