@@ -5,7 +5,7 @@
   It requires the aegsc executable in PATH.
 ]]
 
-script_name = "Aegs template utils"
+script_name = "Aegs template"
 script_description = "Utilities to work with the aegs template format"
 script_author = "bucket3432"
 script_version = "0.1.0"
