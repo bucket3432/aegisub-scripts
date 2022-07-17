@@ -5,6 +5,16 @@
   It requires the aegsc executable in PATH.
 ]]
 
+--[[
+  Copyright (c) 2022 bucket3432
+
+  Use of this source code is governed by an MIT-style
+  license that can be found in the LICENSE file or at
+  https://spdx.org/licenses/MIT.html
+
+  SPDX-License-Identifier: MIT
+]]
+
 script_name = "Aegs template"
 script_description = "Utilities to work with the aegs template format"
 script_author = "bucket3432"
