@@ -24,7 +24,11 @@ end
 
 local MARKER_EFFECT = "aegs:end"
 
--- Returns the index of the aegs:end marker, or nil if not found.
+--- Determines the index of the aegs:end marker
+-- The marker is a dialogue line that contains aegs:end
+-- in the effect field.
+-- @param subs an Aegisub subtitle object
+-- @return the index of the marker, or nil if not present
 local function find_marker(subs)
   for i, line in ipairs(subs) do
     if line.effect == MARKER_EFFECT then
