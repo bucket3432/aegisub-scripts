@@ -5,6 +5,7 @@ script_version = "0.1.0"
 script_namespace = "bucket.Aegs"
 
 local tr = aegisub.gettext
+local util = require 'aegisub.util'
 
 local haveDepCtrl, DependencyControl, depctrl = pcall(require, "l0.DependencyControl")
 local ConfigHandler, config, petzku
@@ -22,6 +23,22 @@ else
 end
 
 function import_main(subs, sel)
+  local marker = {
+    class = "dialogue",
+    comment = true,
+    layer = 0,
+    start_time = 0,
+    end_time = 0,
+    style = "Default",
+    actor = "",
+    margin_l = 0,
+    margin_r = 0,
+    margin_t = 0,
+    effect = "aegs:end",
+    text = "",
+    extra = {},
+  }
+  subs.insert(1, marker)
 end
 
 local macros = {
