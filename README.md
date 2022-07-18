@@ -17,3 +17,7 @@ MIT unless otherwise stated.
 See the [`LICENSE`][LICENSE] file for details.
 
 [LICENSE]: ./LICENSE
+
+- - -
+
+View the repo on [GitHub](https://github.com/bucket3432/aegisub-scripts).
