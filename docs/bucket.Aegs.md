@@ -18,7 +18,7 @@ in your Aegisub user config directory.
 
 The script will register itself with Dependency Control if it is available.
 
-[bucket.Aegs.lua](https://raw.githubusercontent.com/bucket3432/aegisub-scripts/main/macros/bucket.Aegs.lua)
+[bucket.Aegs.lua]: ../macros/bucket.Aegs.lua
 
 ## Usage
 

@@ -2,10 +2,14 @@
 
 A collection of scripts for Aegisub by bucket3432.
 
-See the [docs][] directory for installation and usage documentation
-for the individual scripts.
+## List of scripts
 
-[docs]: ./docs
+Below is a list of scripts in this repo with links to their documentation.
+See the script's documentation for installation and usage instructions.
+
+### Macros
+
+- [Aegs](./docs/bucket.Aegs.md): Utilities to work with the aegs template format.
 
 ## License
 
