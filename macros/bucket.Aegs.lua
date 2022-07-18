@@ -15,6 +15,9 @@
   SPDX-License-Identifier: MIT
 ]]
 
+-- Documentation and latest sources on GitHub:
+-- https://github.com/bucket3432/aegisub-scripts
+
 script_name = "Aegs template"
 script_description = "Utilities to work with the aegs template format"
 script_author = "bucket3432"
