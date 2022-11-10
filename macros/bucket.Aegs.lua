@@ -25,7 +25,6 @@ script_version = "0.1.0"
 script_namespace = "bucket.Aegs"
 
 local tr = aegisub.gettext
-local util = require 'aegisub.util'
 
 local haveDepCtrl, DependencyControl, depctrl = pcall(require, "l0.DependencyControl")
 local petzku
@@ -165,8 +164,7 @@ end
 
 --- Main function for the Import entry
 -- @param subs an Aegisub subtitle object
--- @param sel the current selection
-function import_main(subs, sel)
+local function import_main(subs)
   local file = prompt_for_import_file()
   if not file then aegisub.cancel() end
   if not is_file_readable(file) then
@@ -216,7 +214,7 @@ local macros = {
 if haveDepCtrl then
     depctrl:registerMacros(macros)
 else
-    for i, macro in ipairs(macros) do
+    for _, macro in ipairs(macros) do
         local name, desc, fun = unpack(macro)
         aegisub.register_macro(script_name .. '/' .. name, desc, fun)
     end
