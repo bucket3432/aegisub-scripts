@@ -75,15 +75,15 @@ local IMPORT_UI = {
 --
 
 --- Splits a string by newlines. Ignores empty lines.
--- @param str the string to split
--- @return an iterator of lines with empty lines discarded
+-- @tparam string str the string to split
+-- @treturn string an iterator of lines with empty lines discarded
 local function split_on_newlines(str)
   return str:gmatch("[^\r\n]+")
 end
 
 --- Converts an ASS timecode to its equivalent representation in miilliseconds.
--- @param timecode the ASS timecode to convert
--- @return the equivalent representation milliseconds
+-- @tparam string timecode the ASS timecode to convert
+-- @treturn number the equivalent representation milliseconds
 local function timecode_to_ms(timecode)
   local h, m, s, cs = timecode:match("(%d+):(%d+):(%d+)%.(%d+)")
   return h * 60 * 60 + m * 60 + s * 1000 + cs * 10
@@ -91,8 +91,8 @@ end
 
 --- Parses a raw ASS event into a line table.
 -- Assumes the event is either a Dialogue or Comment event.
--- @param raw the raw ASS event
--- @return the equivalent line table
+-- @tparam string raw the raw ASS event
+-- @treturn tab the equivalent line table
 local function parse_line(raw)
   local line = {
     section = "[Events]",
@@ -122,7 +122,7 @@ local function parse_line(raw)
 end
 
 --- Prompts the user for a file to import.
--- @return the file path to import, or nil if cancelled.
+-- @treturn string the file path to import, or nil if cancelled.
 local function prompt_for_import_file()
   local proceed, values = aegisub.dialog.display(IMPORT_UI.main)
   if not proceed then return nil end
@@ -132,7 +132,7 @@ local function prompt_for_import_file()
 end
 
 --- Checks if a file is readable
--- @param file the path of the file to check
+-- @tparam string file the path of the file to check
 -- @return true if the file is readable, or false otherwise
 local function is_file_readable(file)
   local handle = io.open(file, "r")
@@ -147,8 +147,8 @@ end
 --- Determines the index of the aegs:end marker
 -- The marker is a dialogue line that contains aegs:end
 -- in the effect field.
--- @param subs an Aegisub subtitle object
--- @return the index of the marker, or nil if not present
+-- @tparam table subs an Aegisub subtitle object
+-- @return number|nil the index of the marker, or nil if not present
 local function find_marker(subs)
   for i, line in ipairs(subs) do
     if line.effect == MARKER_EFFECT then
@@ -163,7 +163,7 @@ end
 --
 
 --- Main function for the Import entry
--- @param subs an Aegisub subtitle object
+-- @tparam table subs an Aegisub subtitle object
 local function import_main(subs)
   local file = prompt_for_import_file()
   if not file then aegisub.cancel() end
