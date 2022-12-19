@@ -1,3 +1,16 @@
+--[[
+  Copyright (c) 2022 bucket3432
+
+  Use of this source code is governed by an MIT-style
+  license that can be found in the LICENSE file or at
+  https://spdx.org/licenses/MIT.html
+
+  SPDX-License-Identifier: MIT
+]]
+
+-- Documentation and latest sources on GitHub:
+-- https://github.com/bucket3432/aegisub-scripts
+
 --[[--
   Drop-in replacement for Aegisub's clipboard module that uses external
   programs to interface with the system clipboard.
@@ -12,19 +25,6 @@
   @license MIT
   @module bucket.clipboard
 ]]
-
---[[
-  Copyright (c) 2022 bucket3432
-
-  Use of this source code is governed by an MIT-style
-  license that can be found in the LICENSE file or at
-  https://spdx.org/licenses/MIT.html
-
-  SPDX-License-Identifier: MIT
-]]
-
--- Documentation and latest sources on GitHub:
--- https://github.com/bucket3432/aegisub-scripts
 
 local haveDepCtrl, DependencyControl, depctrl = pcall(require, "l0.DependencyControl")
 if haveDepCtrl then

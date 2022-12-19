@@ -1,12 +1,3 @@
---[[--
-  Aegs template utils. Contains utilities for interacting with
-  aegs-format templates in Aegisub.
-
-  It requires the aegsc executable in PATH.
-
-  @macro bucket.Aegs
-]]
-
 --[[
   Copyright (c) 2022 bucket3432
 
@@ -19,6 +10,15 @@
 
 -- Documentation and latest sources on GitHub:
 -- https://github.com/bucket3432/aegisub-scripts
+
+--[[--
+  Aegs template utils. Contains utilities for interacting with
+  aegs-format templates in Aegisub.
+
+  It requires the aegsc executable in PATH.
+
+  @macro bucket.Aegs
+]]
 
 script_name = "Aegs template"
 script_description = "Utilities to work with the aegs template format"
