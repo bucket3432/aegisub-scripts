@@ -3,6 +3,8 @@
   aegs-format templates in Aegisub.
 
   It requires the aegsc executable in PATH.
+
+  @macro bucket.Aegs
 ]]
 
 --[[
