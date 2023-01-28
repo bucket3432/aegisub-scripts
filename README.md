@@ -11,6 +11,18 @@ See the script's documentation for installation and usage instructions.
 
 - [Aegs](./docs/bucket.Aegs.md): Utilities to work with the aegs template format.
 
+## Development
+
+A Makefile is included for convenience.
+Invoke with `make [target]`.
+
+Targets:
+
+- `docs`: Generate documentation.
+- `lint`: Lint scripts.
+
+If no target is given, the default target `docs` is implied.
+
 ## License
 
 MIT unless otherwise stated.
