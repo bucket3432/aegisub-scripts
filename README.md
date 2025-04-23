@@ -9,7 +9,7 @@ See the script's documentation for installation and usage instructions.
 
 ### Macros
 
-- [Aegs](./docs/bucket.Aegs.md): Utilities to work with the aegs template format.
+- **Aegs**: Utilities to work with the aegs template format.
 
 ## Development
 
