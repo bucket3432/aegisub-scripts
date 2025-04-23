@@ -37,7 +37,7 @@ The script will register itself with DependencyControl if it is available.
 script_name = "Aegs template"
 script_description = "Utilities to work with the aegs template format"
 script_author = "bucket3432"
-script_version = "0.1.0"
+script_version = "0.2.0"
 script_namespace = "bucket.Aegs"
 
 local tr = aegisub.gettext
