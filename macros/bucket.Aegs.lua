@@ -12,12 +12,26 @@
 -- https://github.com/bucket3432/aegisub-scripts
 
 --[[--
-  Aegs template utils. Contains utilities for interacting with
-  aegs-format templates in Aegisub.
+Aegs template utils. Contains utilities for interacting with
+aegs-format templates in Aegisub.
 
-  It requires the aegsc executable in PATH.
+## Requirements
 
-  @macro bucket.Aegs
+- [petzkuLib](https://typesettingtools.github.io/depctrl-browser/modules/petzku.util/)
+- [`aegsc`][aegsc] available in `PATH`
+
+[aegsc]: https://github.com/butterfansubs/aegsc#installation
+
+## Installation
+
+Copy [`macros/bucket.Aegs.lua`][bucket.Aegs.lua] into `automation/autoload`
+in your Aegisub user config directory.
+
+The script will register itself with DependencyControl if it is available.
+
+[bucket.Aegs.lua]: https://github.com/bucket3432/aegisub-scripts/raw/main/macros/bucket.Aegs.lua
+
+@macro bucket.Aegs
 ]]
 
 script_name = "Aegs template"
