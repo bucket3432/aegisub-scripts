@@ -191,11 +191,10 @@ end
 -- Main
 --
 
---- Main function for the Import entry
+--- Imports an Aegs file
 -- @tparam table subs an Aegisub subtitle object
-local function import_main(subs)
-  local file = prompt_for_import_file()
-  if not file then aegisub.cancel() end
+-- @tparam string file the path to the .aegs file
+local function import_aegs(subs, file)
   if not is_file_readable(file) then
     aegisub.log(0, tr"Could not open file for reading: " .. file)
     aegisub.cancel()
@@ -237,6 +236,27 @@ local function import_main(subs)
   subs.insert(dialogue_index, table.unpack(lines))
 end
 
+--- Main function for the Import entry
+-- @tparam table subs an Aegisub subtitle object
+local function import_main(subs)
+  local file = prompt_for_import_file()
+  if not file then aegisub.cancel() end
+
+  import_aegs(subs, file)
+end
+
+--- Main function for the Import (last used) entry
+-- @tparam table subs an Aegisub subtitle object
+local function import_last(subs)
+  local file = IMPORT_UI.main.path_input.text
+
+  if IMPORT_UI.main.path_input.text == "" then
+    import_main(subs)
+  else
+    import_aegs(subs, file)
+  end
+end
+
 local macros = {
   --- Imports an aegs-format template. Replaces any existing imports.
   --
@@ -258,8 +278,19 @@ local macros = {
   -- All lines up to but not including the `aegs:end` line will be deleted
   -- and replaced with the new output.
   --
-  -- @menuitem Import...
-  {tr"Import...", tr"Import an aegs-format template. Replaces any existing imports.", import_main}
+  -- @menuitem import
+  -- @displayname Import...
+  {tr"Import...", tr"Import an aegs-format template. Replaces any existing imports.", import_main},
+
+  --- Imports an aegs-format template using the last-used settings. Replaces any existing imports.
+  --
+  -- If this is the first time the script is run in the current session,
+  -- you will be prompted for a file.
+  -- See @{import|Import...} for details.
+  --
+  -- @menuitem import_last_used
+  -- @displayname Import (last used)
+  {tr"Import (last used)", tr"Import an aegs-format template with the last-used settings. Replaces any existing imports.", import_last}
 }
 
 if haveDepCtrl then
