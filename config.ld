@@ -26,3 +26,13 @@ vars = {
   end,
   github = "https://github.com/bucket3432/aegisub-scripts",
 }
+custom_tags = {
+  {"displayname", hidden = true},
+}
+custom_display_name_handler = function(item, default_handler)
+  if item.tags.displayname then
+    return item.tags.displayname[1]
+  else
+    return default_handler(item)
+  end
+end
