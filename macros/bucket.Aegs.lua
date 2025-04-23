@@ -160,6 +160,19 @@ local function find_marker(subs)
   return nil
 end
 
+--- Determines the index of the first dialogue line
+-- @tparam table subs an Aegisub subtitle object
+-- @return number|nil the index of the first dialogue line, or nil if not present
+local function find_first_dialogue(subs)
+  for i = 1, #subs do
+    if subs[i].class == "dialogue" then
+      return i
+    end
+  end
+
+  return nil
+end
+
 -- -------------------------------------------------------------------
 -- Main
 --
@@ -184,8 +197,9 @@ local function import_main(subs)
   end
 
   local marker_index = find_marker(subs)
+  local dialogue_index = find_first_dialogue(subs)
   if marker_index then
-    subs.deleterange(1, marker_index - 1)
+    subs.deleterange(dialogue_index, marker_index - 1)
   else
     local marker = {
       section = "[Events]",
@@ -206,7 +220,7 @@ local function import_main(subs)
     table.insert(lines, marker)
   end
 
-  subs.insert(1, table.unpack(lines))
+  subs.insert(dialogue_index, table.unpack(lines))
 end
 
 local macros = {
